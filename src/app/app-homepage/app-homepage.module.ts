@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from './loader/loader.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BookRecordComponent } from './book-record/book-record.component';
@@ -12,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PaymentsComponent } from './payments/payments.component';
 @NgModule({
-  declarations: [LoaderComponent, BookRecordComponent, PaymentsComponent],
+  declarations: [BookRecordComponent, PaymentsComponent],
   imports: [
     CommonModule,
     MatProgressBarModule,
@@ -24,9 +23,6 @@ import { PaymentsComponent } from './payments/payments.component';
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule
-  ],
-  exports:[
-    LoaderComponent
   ]
 })
 export class AppHomepageModule { }
