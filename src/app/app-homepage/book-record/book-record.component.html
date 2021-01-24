@@ -1,0 +1,33 @@
+<div fxLayout="column">
+  <div fxLayout="column">
+    <div fxLayoutAlign="end" class="form-group" fxLayout="row">
+      <mat-checkbox [formControl]="sortBookRecords" style="margin-top: 65px;margin-right: 50px">
+      Sort By Average Rating
+      </mat-checkbox>
+      <input type="text" class="form-control" fxFlex="25" style="height:30px;margin-top: 60px;margin-right: 50px" placeholder="Search Book Title" [formControl]="searchField">
+      <img src="../../../assets/shopping-cart--v2.png" width="50" height="50" style="height:30px;margin-top: 60px;">
+      <span style="height:30px;margin-top: 60px;margin-right: 50px"> {{cartItemsSize}} </span>
+      <button style="height:30px;margin-top: 60px;margin-right: 50px" (click)="paymentPage()">Check Out</button>
+    </div>
+    <mat-grid-list cols="2" rowHeight="2:1" [gutterSize]="'40px'" style="margin: 50px 50px 0 50px">
+      <mat-grid-tile
+          *ngFor="let book of bookDetails | paginate: { itemsPerPage: 10, currentPage: pageNumber };let indexOfelement=index;" style="background-color: lightgrey;border: 5px solid #20b2aa;">
+          <div fxLayout="row" fxLayoutGap="8px">
+            <mat-checkbox [checked]='book.cartSelection' (change)="cartSelectionChange($event.checked,book.bookID)" style="line-height:100px"></mat-checkbox>
+            <img [src]='bookImages[indexOfelement]["Image"]' width="120" height="120" style="padding-left:20px ">
+            <div fxLayout="column">
+              <span style="font-weight: 500;font-size: 15px">Book Title : {{book.title}}</span>
+              <span style="font-size: 15px">Book ID : {{book.bookID}}</span>
+              <span style="font-size: 15px">Authors : {{book.authors}}</span>
+              <span style="font-size: 15px">Price : {{book.price}}</span>
+              <span style="font-size: 15px">Average Rating : {{book.average_rating}}</span>
+              <span style="font-size: 15px">Language : {{book.language_code}}</span>
+              <span style="font-size: 15px">Poeple Rated : {{book.ratings_count}}</span>
+              <span style="font-size: 15px">ISBN : {{book.isbn}}</span>
+            </div>
+          </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <pagination-controls (pageChange)="pageNumber = $event" style="margin-bottom:150px;padding-right: 50px" fxLayoutAlign="end"></pagination-controls>
+</div>
